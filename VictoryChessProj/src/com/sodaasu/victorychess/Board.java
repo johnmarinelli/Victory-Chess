@@ -10,6 +10,10 @@ public class Board {
 	private final int TOTAL_PIECES = 32;
 	private final int TOTAL_SPACES = 64;
 	
+	//8x8 board
+	private final int BOARD_WIDTH = 8;
+	private final int BOARD_HEIGHT = 8;
+	
 	//models the contents of the board. a space not containing a piece should be null
 	private ArrayList<Piece> spaces;
 	
@@ -18,6 +22,11 @@ public class Board {
 		//initialize board spaces & guarantee that 64 spaces will fit
 		spaces = new ArrayList<Piece>();
 		spaces.ensureCapacity(TOTAL_SPACES);
+	}
+	
+	//helper function to make up for ArrayLists' lack of 2Dness
+	public int getIndexFrom2D(int xCoord, int yCoord){
+		return ((yCoord * BOARD_WIDTH) + xCoord);
 	}
 	
 	//returns true if the space is unoccupied
